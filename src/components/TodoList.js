@@ -11,7 +11,7 @@ function TodoList({ $target, initialState }) {
   this.render = () => {
     $list.innerHTML = `
       <ul>
-        ${this.state.map((item) => `<li>${item}</li>`).join("")}
+        ${this.state.map((item) => `<li>${item.id} / ${item.text} / ${item.checked}</li>`).join("")}
       </ul>
     `;
   };
