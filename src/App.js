@@ -23,9 +23,14 @@ function App({ $target }) {
     lastId++;
   };
 
+  const onClick = (id) => {
+    const nextState = list.state.filter((item) => item.id !== id);
+    list.setState(nextState);
+  };
+
   new TodoForm({ $target: $page, onSubmit });
 
-  const list = new TodoList({ $target: $page, initialState });
+  const list = new TodoList({ $target: $page, initialState, onClick });
 
   onSubmit("할일4");
 }

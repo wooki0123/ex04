@@ -1,4 +1,4 @@
-function TodoList({ $target, initialState }) {
+function TodoList({ $target, initialState, onClick }) {
   const $list = document.createElement("div");
 
   this.state = initialState;
@@ -11,7 +11,7 @@ function TodoList({ $target, initialState }) {
   $list.addEventListener("click", (e) => {
     if (e.target.classList.contains("del_btn")) {
       const id = parseInt(e.target.getAttribute("data-id"));
-      console.log(id);
+      onClick(id);
     }
   });
 
