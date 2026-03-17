@@ -7,7 +7,10 @@ function App({ $target }) {
 
   $target.appendChild($page);
 
-  new TodoHeader({ $target: $page });
+  const header = new TodoHeader({ $target: $page });
+
+  header.setState("안녕");
+
   new TodoForm({ $target: $page });
   new TodoList({ $target: $page });
 }
