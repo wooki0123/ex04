@@ -3,6 +3,7 @@ import TodoHeader from "./components/TodoHeader.js";
 import TodoList from "./components/TodoList.js";
 
 function App({ $target }) {
+  const initialState = ["할일 1", "할일 2", "할일 3"];
   const $page = document.createElement("div");
 
   $target.appendChild($page);
@@ -12,6 +13,8 @@ function App({ $target }) {
   header.setState("안녕");
 
   new TodoForm({ $target: $page });
-  new TodoList({ $target: $page });
+  const list = new TodoList({ $target: $page });
+
+  list.setState("할일 4");
 }
 export default App;

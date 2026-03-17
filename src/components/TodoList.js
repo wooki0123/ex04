@@ -1,11 +1,24 @@
 function TodoList({ $target }) {
-  const $ul = document.createElement("ul");
-  $ul.innerHTML = `
-      <li>할 일 1</li>
-      <li>할 일 2</li>
-      <li>할 일 3</li>
+  const $list = document.createElement("div");
+
+  this.state = ["할일 1", "할일 2", "할일 3"];
+
+  this.setState = (nextState) => {
+    this.state = [...this.state, nextState];
+    this.render();
+  };
+
+  this.render = () => {
+    $list.innerHTML = `
+      <ul>
+        ${this.state.map((item) => `<li>${item}</li>`).join("")}
+      </ul>
     `;
-  $target.appendChild($ul);
+  };
+
+  this.render();
+
+  $target.appendChild($list);
 }
 
 export default TodoList;
