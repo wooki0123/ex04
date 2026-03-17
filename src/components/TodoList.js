@@ -8,10 +8,17 @@ function TodoList({ $target, initialState }) {
     this.render();
   };
 
+  $list.addEventListener("click", (e) => {
+    if (e.target.classList.contains("del_btn")) {
+      const id = parseInt(e.target.getAttribute("data-id"));
+      console.log(id);
+    }
+  });
+
   this.render = () => {
     $list.innerHTML = `
       <ul>
-        ${this.state.map((item) => `<li>${item.id} / ${item.text} / ${item.checked}</li>`).join("")}
+        ${this.state.map((item) => `<li>${item.id} / ${item.text} / <button class="del_btn" data-id="${item.id}">X</button></li>`).join("")}
       </ul>
     `;
   };
