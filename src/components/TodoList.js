@@ -1,10 +1,10 @@
-function TodoList({ $target }) {
+function TodoList({ $target, initialState }) {
   const $list = document.createElement("div");
 
-  this.state = ["할일 1", "할일 2", "할일 3"];
+  this.state = initialState;
 
   this.setState = (nextState) => {
-    this.state = [...this.state, nextState];
+    this.state = nextState;
     this.render();
   };
 

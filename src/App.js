@@ -13,8 +13,8 @@ function App({ $target }) {
   header.setState("안녕");
 
   new TodoForm({ $target: $page });
-  const list = new TodoList({ $target: $page });
+  const list = new TodoList({ $target: $page, initialState });
 
-  list.setState("할일 4");
+  list.setState([...initialState, "할일 4"]);
 }
 export default App;
