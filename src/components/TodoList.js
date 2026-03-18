@@ -28,13 +28,20 @@ function TodoList({ $target, initialState, onClick, onChange }) {
           .map(
             (
               item,
-            ) => `<li><input type="checkbox" class="toggle_btn" data-id="${item.id}" ${item.checked ? "checked" : ""}/>${JSON.stringify(item.checked)}
+            ) => `<li style="text-decoration: ${item.checked ? "line-through" : "none"}"><input type="checkbox" class="toggle_btn" data-id="${item.id}" ${item.checked && "checked"}/>
             <span>${item.id} / ${item.text}</span> 
         <button class="del_btn" data-id="${item.id}">X</button></li>`,
           )
           .join("")}
       </ul>
     `;
+    /* 삼항 연산자 대신 &&(AND) 연산자를 쓸 경우
+    <li style="${item.checked && "text-decoration: line-through"}">
+      <input type="checkbox" class="toggle_btn" data-id="${item.id}" ${item.checked && "checked"} />
+      <span>${item.id} / ${item.text}</span>
+      <button class="del_btn" data-id="${item.id}">X</button>
+    </li>
+  */
   };
 
   this.render();
