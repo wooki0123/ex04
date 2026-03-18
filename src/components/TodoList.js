@@ -14,33 +14,21 @@ function TodoList({ $target, initialState, onClick, onChange }) {
     if (e.target.classList.contains("del_btn")) {
       const id = parseInt(e.target.getAttribute("data-id"));
       onClick(id);
-    }
-  });
-  $list.addEventListener("click", (e) => {
-    if (e.target.classList.contains("toggle_btn")) {
+    } else if (e.target.classList.contains("toggle_btn")) {
       const id = parseInt(e.target.getAttribute("data-id"));
       onChange(id);
     }
   });
 
-  this.render = () => {
-    $list.innerHTML = ``;
-    const $ul = document.createElement("ul");
+  const $ul = document.createElement("ul");
+  $list.appendChild($ul);
 
-    this.state.map((item) => {
+  this.render = () => {
+    $ul.innerHTML = ``;
+    this.state.forEach((item) => {
       new TodoItem({ $target: $ul, item });
     });
-
-    $list.appendChild($ul);
   };
-
-  /* 삼항 연산자 대신 &&(AND) 연산자를 쓸 경우
-    <li style="${item.checked && "text-decoration: line-through"}">
-      <input type="checkbox" class="toggle_btn" data-id="${item.id}" ${item.checked && "checked"} />
-      <span>${item.id} / ${item.text}</span>
-      <button class="del_btn" data-id="${item.id}">X</button>
-    </li>
-  */
 
   this.render();
 
