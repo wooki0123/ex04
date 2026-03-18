@@ -28,9 +28,21 @@ function App({ $target }) {
     list.setState(nextState);
   };
 
+  const onChange = (id) => {
+    const checkState = list.state.map((item) =>
+      item.id == id ? { ...item, checked: !item.checked } : item,
+    );
+    list.setState(checkState);
+  };
+
   new TodoForm({ $target: $page, onSubmit });
 
-  const list = new TodoList({ $target: $page, initialState, onClick });
+  const list = new TodoList({
+    $target: $page,
+    initialState,
+    onClick,
+    onChange,
+  });
 
   onSubmit("할일4");
 }
